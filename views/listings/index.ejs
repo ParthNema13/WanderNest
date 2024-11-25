@@ -1,0 +1,95 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <body>
+    <div class="option mt-3 mb-3">
+
+      <div class="search">
+        <form class="d-flex airbnb-style">
+          <input class="form-control airbnb-input me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn airbnb-btn" type="submit">Search</button>
+        </form>
+      </div>
+
+      <div class="tax-switch ms-auto">
+        <div class="tax-btn-div ">
+          <button class="tax-btn ">With Tax</button>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <div class="category mt-2 mb-2 ">
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-cow "></i></div>
+        <div class="name">Grassland</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-hotel"></i></div>
+        <div class="name">Luxury</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-umbrella-beach"></i></div>
+        <div class="name">Beach</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-star"></i></div>
+        <div class="name">Icons</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-bowl-food"></i></div>
+        <div class="name">Food Delights</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-tower-observation"></i></div>
+        <div class="name">Tower</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-house"></i></div>
+        <div class="name">Cottage</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-cloud"></i></div>
+        <div class="name">Season</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-snowflake"></i></div>
+        <div class="name">Snow</div>
+      </div>
+      <div class="item_">
+        <div class="ico"><i class="fa-solid fa-place-of-worship"></i></i></div>
+        <div class="name">Holy Sights</div>
+      </div>
+    </div>
+    <hr>
+    
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
+        <% for(let listing of allListings) { %>
+          <a class="listing-link" href="/listings/<%= listing._id %>">
+            <div class="card col">
+              <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem;">
+              <div class="card-img-overlay"></div>
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                <b><%= listing.title %></b>  <br>
+                <div class="tax-none">
+                  <%= listing.price.toLocaleString("en-IN") %> / night
+                </div>
+                <div class="tax hidden">
+                  <%= (listing.price.toLocaleString("en-IN"))%> + 18% tax / night
+                </div>
+                </p>
+              </div>
+            </div>
+          </a>
+        <% } %>
+      </div>
+      <script src="/js/toggle.js"></script>
+      
+  </body>
+
+
+
+
+  
